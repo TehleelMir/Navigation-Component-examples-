@@ -6,18 +6,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.navigationcomponent.databinding.FragmentHomeBinding
 import com.example.navigationcomponent.databinding.FragmentLoginBinding
+import com.example.navigationcomponent.databinding.FragmentWelcomeBinding
 
-class LoginFragment: Fragment() {
-    private lateinit var binding: FragmentLoginBinding
+class WelcomeFragment: Fragment() {
+    private lateinit var binding: FragmentWelcomeBinding
+    private val args: WelcomeFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentLoginBinding.inflate(inflater)
+        binding = FragmentWelcomeBinding.inflate(inflater)
         return binding.root
     }
 
@@ -27,10 +30,13 @@ class LoginFragment: Fragment() {
     }
 
     private fun init() {
+        binding.apply {
+            textViewName.text = args.userName
+            textViewPassword.text = args.password
+        }
+
         binding.button.setOnClickListener {
-            val userName = binding.editTextName.text.toString()
-            val password = binding.editTextPassword.text.toString()
-            val action = LoginFragmentDirections.actionLoginFragmentToWelcomeFragment(userName, password)
+            val action = WelcomeFragmentDirections.actionWelcomeFragmentToHomeFragment()
             findNavController().navigate(action)
         }
     }
