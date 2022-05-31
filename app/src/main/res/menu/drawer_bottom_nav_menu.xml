@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="Home"
+        android:icon="@drawable/ic_launcher_background"
+        android:id="@+id/homeFragment"/>
+
+    <item
+        android:id="@+id/searchFragment"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="Search"/>
+
+</menu>
